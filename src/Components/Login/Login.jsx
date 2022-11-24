@@ -63,7 +63,7 @@ export default function Login ()  {
     if (json.data.existe === true) {
       dispatch(loginUser(input))
       window.localStorage.setItem("user", input.email);
-      return  navigate('/work')
+      return  navigate('/home')
      
     } else if(json.data.existe === false) {
      return setModalError(true) , setModalErrorMessage('El usuario no existe o contraseña incorrecta')

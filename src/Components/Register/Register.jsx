@@ -182,7 +182,7 @@ console.log(allSedes)
                 if(!showCreateSede){ 
                 dispatch(registerUser(input))
                 window.localStorage.setItem("user", input.email);
-                navigate('/work')}
+                navigate('/home')}
                 else{
                     let sedeCreate = {
                         name: input.sede
@@ -198,7 +198,7 @@ console.log(allSedes)
 
                     await dispatch(registerUser(userSede))
                     window.localStorage.setItem("user", input.email);
-                    navigate('/work')
+                    navigate('/home')
                 }
                
             }
@@ -325,10 +325,10 @@ console.log(allSedes)
                                             <option value='selected' hidden >Sedes      </option>
                                             {allSedes?.length > 0 ? 
                                                 allSedes?.map((s) => {
-                                                    return (<option value={s?.name} key={s?.name}>{s?.name}</option>)
+                                                    return (<option value={s?.name} key={s?.id}>{s?.name}</option>)
                                                 })
 
-                                             : <option>No se encontraros sedes..</option>}
+                                             : <option>No se encontraron sedes..</option>}
                                         </select>
                                         <Image2 onClick={(e) => setCreateSede(true , e)} title="Agregar sede" className="icon"  src={iconMas} />
                                     </Text2>
@@ -473,7 +473,7 @@ const MahoganyText = styled.div`
   color: #ffffff;
   box-shadow: 0px 3px 4px 0px rgba(0, 0, 0, 0.15);
   width: 307px;
-  height: 19px;
+  height: 40px;
   background-color: #482afa;
   flex-direction: row;
   justify-content: center;
