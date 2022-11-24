@@ -25,3 +25,10 @@ export function registerUser(payload  ) {
     };
   
   }
+
+  export function createSede(payload ){
+    return async (dispatch) => {
+      const response  = await axios.post(`${BASE_URL}/api/sede/create` , payload );
+    };
+  
+  }

@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React, { useState , useEffect} from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
-import { registerUser } from "../../Redux/Actions";
+import { registerUser, createSede } from "../../Redux/Actions";
 import ModalError from "../ModalError/ModalError";
 import iconUser from '../../Assets/iconUser.svg'
 import iconCheck from '../../Assets/iconCheck.svg'
@@ -10,8 +10,10 @@ import axios from 'axios';
 import styled from "styled-components";
 import './RegisterComponents.css'
 import passIcon from '../../Assets/iconPassword.svg'
-
-
+import sedeIcon from '../../Assets/iconSede.svg'
+import iconMas from '../../Assets/iconMas.svg'
+import iconReturn from '../../Assets/iconReturn.svg'
+import { v4 as uuidv4 } from 'uuid'
 // eslint-disable-next-line no-empty-pattern
 export default function RegisterUser() {
 
@@ -25,14 +27,25 @@ export default function RegisterUser() {
     const [validate_email, setValidate_email] = useState("0px 3px 4px 0px rgba(0, 0, 0, 0.08)")
     const [validate_password, setValidate_password] = useState("0px 3px 4px 0px rgba(0, 0, 0, 0.08)")
     const [showPassword, setShowPassword] = useState(false)
-
+    const [showCreateSede , setCreateSede] = useState(false)
+    const [allSedes , setAllSedes] = useState(false)
+console.log(allSedes)
     const navigate = useNavigate()
 
+    async  function getAllSedes() {
+        var json = await axios.get('http://localhost:3001/api/sede/All')
+        setAllSedes(json.data)
+    }
 
+    useEffect(() => {
+        getAllSedes()
+      }, []);
+    
     const [input, setInput] = useState({
         name: "",
         email: "",
         password: "",
+        sede: ""
     });
     const [errorsName, setErrorsName] = useState({
         name: "inicio"
@@ -108,7 +121,15 @@ export default function RegisterUser() {
         return errorsPassword
     }
 
+    console.log(input)
 
+    const handleChangeSede = (e) => {
+        setInput({
+            ...input,
+            sede: e.target.value,
+        });
+        
+    }
     const handleInputChangeName = function (e) {
         setInput({
             ...input,
@@ -158,9 +179,28 @@ export default function RegisterUser() {
             if (json.data.existe === true) {
                 return setErrorRegister(true), setErrorMessage('El email ingresado ya existe')
             } else {
+                if(!showCreateSede){ 
                 dispatch(registerUser(input))
                 window.localStorage.setItem("user", input.email);
-                navigate('/work')
+                navigate('/work')}
+                else{
+                    let sedeCreate = {
+                        name: input.sede
+                    }
+                    await dispatch(createSede(sedeCreate))
+
+                    let userSede = {
+                        name: input.name,
+                        email: input.email,
+                        password: input.password,
+                        sede: input.sede
+                    }
+
+                    await dispatch(registerUser(userSede))
+                    window.localStorage.setItem("user", input.email);
+                    navigate('/work')
+                }
+               
             }
         } catch (error) {
             return setErrorRegister(true), setErrorMessage('Algo salio mal (404)')
@@ -195,6 +235,10 @@ export default function RegisterUser() {
             return setErrorRegister(true), setErrorMessage('Su contraseña debe contener mas de 6 caracteres')
 
         }
+        if (!input.sede) {
+            return setErrorRegister(true), setErrorMessage('Debe colocar una sede')
+
+        }
         handleValidateUser(input)
 
     }
@@ -213,79 +257,112 @@ export default function RegisterUser() {
 
     return (
         <div>
-        {errorRegister ?
+            {errorRegister ?
                 <><ModalError error={errorMessage} closeModal={handleCloseModalError} /></>
                 : null}
-        <NewRootRoot>
-            
-            <form className="formDivContainerRegister">
-                <Register>
-                    <Text1>Contador de Ecos y Mas</Text1>
-                    <div className="divContainerInput">
-                        <WhiteFlexRow validate={validate_name}>
-                            <div className="divContainerInputPassword">
+            <NewRootRoot>
 
-                                <Image1 src={iconUser} />
+                <form className="formDivContainerRegister">
+                    <Register>
+                        <Text1>Contador de Ecos y Mas</Text1>
+                        <div className="divContainerInput">
+                            <WhiteFlexRow validate={validate_name}>
+                                <div className="divContainerInputPassword">
+
+                                    <Image1 src={iconUser} />
+                                    <Text2 className="icon"  >
+                                        <input
+                                            className="inputLogin"
+                                            value={input.name}
+                                            type="text"
+                                            name="name"
+                                            maxLength='60'
+                                            minLength='8'
+                                            placeholder="Nombre de usuario"
+                                            onChange={(e) => handleInputChangeName(e)}
+                                        />
+                                        {errorsName.name === "inicio" ? null :
+                                            errorsName !== "vacio" && errorsName !== "largo" ? (<img src={iconCheck} />) : null}
+                                    </Text2>
+                                </div>
+                            </WhiteFlexRow>
+                            <WhiteFlexRow validate={validate_email}>
+                                <div className="divContainerInputPassword">
+                                    <Image1 src={"https://file.rendit.io/n/mAmlgugc1vFKmXnpkc3e.svg"} />
+                                    <Text2 className="icon" >
+
+                                        <input type="email"
+                                            className="inputLogin"
+                                            value={input.email}
+                                            name='email'
+                                            placeholder="Email"
+                                            onChange={(e) => handleInputChangeEmail(e)} />
+                                        {errorsEmail.email === "inicio" ? null :
+                                            errorsEmail !== "error" ? (<img src={iconCheck} />) : null}
+                                    </Text2>
+                                </div>
+                            </WhiteFlexRow>
+                            <WhiteFlexRow validate={validate_password}>
+                                <div className="divContainerInputPassword">
+                                    <img className="imagePassword" src={passIcon} />
+                                    <Text2 className="icon"  >
+                                        <input className="inputPassword"
+                                            value={input.password}
+                                            type={showPassword ? "text" : "password"}
+                                            placeholder="Contraseña"
+                                            name='password'
+                                            onChange={(e) => handleInputChangePassword(e)} />
+                                        <Image2 className="icon" onClick={() => handleShowPassword()} src={"https://file.rendit.io/n/JACn3ku2NQFDxkH8iY6V.svg"} />
+                                    </Text2>
+
+                                </div>
+                            </WhiteFlexRow >
+                            { !showCreateSede ? <WhiteFlexRow validate={validate_password}>
+                                <div className="divContainerInputPassword">
+                                    <img className="imagePassword" src={sedeIcon} />
+                                    <Text2 className="icon"  >
+                                        <select className="inputPassword" onChange={(e) => handleChangeSede(e)}>
+                                            <option value='selected' hidden >Sedes      </option>
+                                            {allSedes?.length > 0 ? 
+                                                allSedes?.map((s) => {
+                                                    return (<option value={s?.name} key={s?.name}>{s?.name}</option>)
+                                                })
+
+                                             : <option>No se encontraros sedes..</option>}
+                                        </select>
+                                        <Image2 onClick={(e) => setCreateSede(true , e)} title="Agregar sede" className="icon"  src={iconMas} />
+                                    </Text2>
+                                </div>
+                            </WhiteFlexRow > : 
+                            <WhiteFlexRow validate={validate_password}>
+                            <div className="divContainerInputPassword">
+                                <img className="imagePassword" src={sedeIcon} />
                                 <Text2 className="icon"  >
-                                    <input
-                                        className="inputLogin"
-                                        value={input.name}
-                                        type="text"
-                                        name="name"
-                                        maxLength='60'
-                                        minLength='8'
-                                        placeholder="Nombre de usuario"
-                                        onChange={(e) => handleInputChangeName(e)}
-                                    />
-                                    {errorsName.name === "inicio" ? null :
-                                        errorsName !== "vacio" && errorsName !== "largo" ? (<img src={iconCheck} />) : null}
+                                <input className="inputPassword"
+                                            value={input.sede}
+                                            type="text"
+                                            placeholder="Nombre de la sede"
+                                            name='sede'
+                                            onChange={(e) => handleChangeSede(e)} />
+                                    <Image2 onClick={(e) => setCreateSede(!createSede, e)} title="Lista de sedes" className="icon"  src={iconReturn} />
                                 </Text2>
                             </div>
-                        </WhiteFlexRow>
-                        <WhiteFlexRow validate={validate_email}>
-                            <div className="divContainerInputPassword">
-                                <Image1 src={"https://file.rendit.io/n/mAmlgugc1vFKmXnpkc3e.svg"} />
-                                <Text2 className="icon" >
+                        </WhiteFlexRow > }
+                            
+                            <MahoganyText type='button' onClick={(e) => handleRegister(e)} className="buttonActive">
+                                Registrarse
+                            </MahoganyText>
+                            <Text5>
+                                ¿Ya estás registrado?
+                                <Text6 type='button' onClick={(e) => handleRedirectLogin(e)}>
+                                    Iniciar sesión
+                                </Text6>
+                            </Text5>
+                        </div>
+                    </Register>
+                </form>
 
-                                    <input type="email"
-                                        className="inputLogin"
-                                        value={input.email}
-                                        name='email'
-                                        placeholder="Email"
-                                        onChange={(e) => handleInputChangeEmail(e)} />
-                                    {errorsEmail.email === "inicio" ? null :
-                                        errorsEmail !== "error" ? (<img src={iconCheck} />) : null}
-                                </Text2>
-                            </div>
-                        </WhiteFlexRow>
-                        <WhiteFlexRow validate={validate_password}>
-                            <div className="divContainerInputPassword">
-                                <img className="imagePassword" src={passIcon} />
-                                <Text2 className="icon"  >
-                                    <input className="inputPassword"
-                                        value={input.password}
-                                        type={showPassword ? "text" : "password"}
-                                        placeholder="Contraseña"
-                                        name='password'
-                                        onChange={(e) => handleInputChangePassword(e)} />
-                                    <Image2 className="icon" onClick={() => handleShowPassword()} src={"https://file.rendit.io/n/JACn3ku2NQFDxkH8iY6V.svg"} />
-                                </Text2>
-                            </div>
-                        </WhiteFlexRow >
-                        <MahoganyText type='button' onClick={(e) => handleRegister(e)} className="buttonActive">
-                            Registrarse
-                        </MahoganyText>
-                        <Text5>
-                            ¿Ya estás registrado?
-                            <Text6 type='button' onClick={(e) => handleRedirectLogin(e)}>
-                                Iniciar sesión
-                            </Text6>
-                        </Text5>
-                    </div>
-                </Register>
-            </form>
-
-        </NewRootRoot></div>
+            </NewRootRoot></div>
     );
 };
 
