@@ -1,8 +1,75 @@
 .flex{
     display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
 }
-.info{
+.intro{
     display: flex;
     width: 100%;
-    height: 100vh;
+    height: 3rem;
+    margin-top: 3rem;
+    margin-left: 2rem;
+    justify-content: center;
+}
+.editInfo{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: nowrap;
+    height: 2rem;
+    width: 2rem;
+    margin-left: 5rem;
+    margin-top: 2rem;
+}
+.buttonEditInfo{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    border-color: #482afa;
+    border-radius: 1rem;
+    margin-right: 6rem;
+}
+.divEmail{
+    display: flex;
+}
+.emailText{
+    display: flex;
+    width: 100%;
+    height: 3rem;
+    margin-top: 3rem;
+    justify-content: center;
+}
+
+.divSede{
+    display: flex;
+}
+.sedeText{
+    display: flex;
+    width: 100%;
+    height: 3rem;
+    margin-top: 3rem;
+    justify-content: center;
+}
+.divInfo{
+    display: flex;
+    flex-direction: column;
+    margin-left: 0.6rem;
+    
+}
+.divIntro{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+.iconMas{
+    display: flex;
+    width: 5rem;
+    height: 5rem;
+    cursor: pointer;
+    justify-content: center;
+    align-items: center;
+
+
 }

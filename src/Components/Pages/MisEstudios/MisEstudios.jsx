@@ -1,13 +1,12 @@
-import SideBar from "../../SideBar/SideBar"
+
 import styles from './MisEstudios.module.css'
-export default function MisEstudios (){
+export default function MisEstudios ({user}){
 
 
     
     return (
         <div className={styles.flex}>
-        <SideBar/>
-        <div className={styles.info}>Mis estudios</div>
+        <div className={styles.info}>Tus estudios {user.name}</div>
         </div>
     )
 }

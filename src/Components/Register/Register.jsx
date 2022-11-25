@@ -13,12 +13,12 @@ import passIcon from '../../Assets/iconPassword.svg'
 import sedeIcon from '../../Assets/iconSede.svg'
 import iconMas from '../../Assets/iconMas.svg'
 import iconReturn from '../../Assets/iconReturn.svg'
-import { v4 as uuidv4 } from 'uuid'
-// eslint-disable-next-line no-empty-pattern
+
+
 export default function RegisterUser() {
 
 
-    //   const history = useHistory();
+
     const dispatch = useDispatch()
     const [show, setShow] = useState(false)
     const [errorRegister, setErrorRegister] = useState(false)

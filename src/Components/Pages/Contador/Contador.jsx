@@ -1,12 +1,12 @@
-import SideBar from "../../SideBar/SideBar"
+
 import styles from "./Contador.module.css"
-export default function Contador (){
+export default function Contador ({user}){
 
 
     
     return (
         <div className={styles.flex} >
-        <SideBar/><div className={styles.info}>Contador</div>
+        <div className={styles.info}>Tu contador de estudios {user.name}</div>
         
         </div>
     )

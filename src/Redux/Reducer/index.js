@@ -1,5 +1,7 @@
 const initialState = {
-    detailUser: []
+    
+    userStudys : [],
+    userInfo: []
   }
   
   
@@ -10,7 +12,7 @@ const initialState = {
       case "GET_USER":
         return {
           ...state,
-          detailUser: action.payload
+          userInfo: action.payload
         }
   
   

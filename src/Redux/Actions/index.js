@@ -32,3 +32,14 @@ export function registerUser(payload  ) {
     };
   
   }
+
+
+  export function getUser(payload){
+    return async (dispatch) => {
+      const response  = await axios.get(`${BASE_URL}/api/users/email/` + payload );
+      dispatch({
+        type: "GET_USER",
+        payload: response.data.user
+      })
+    };
+  }

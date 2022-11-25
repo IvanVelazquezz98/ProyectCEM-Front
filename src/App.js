@@ -2,7 +2,7 @@ import React, { FunctionComponent } from 'react';
 import { BrowserRouter, Route , Routes } from 'react-router-dom';
 import Login from "./Components/Login/Login"
 import Register from "./Components/Register/Register"
-import Home from './Components/Pages/Home/Home'
+import Home from './Components/Home/Home'
 import Perfil from './Components/Pages/Perfil/Perfil'
 import Contador from './Components/Pages/Contador/Contador'
 import MisEstudios from './Components/Pages/MisEstudios/MisEstudios'
