@@ -12,8 +12,8 @@ export default function Perfil ({user}){
           </div>
           <br></br>
           <div className={styles.divInfo}>
-          <div className={styles.divEmail}> <h6 className={styles.emailText}>Email:     {' ' + user.email} </h6></div>
-          <div className={styles.divEmail}> <h6 className={styles.emailText}>Sede: {' '} {user.sede} </h6></div>
+          <div className={styles.divEmail}> <h6 className={styles.emailText}>Email:     {' ' + user?.email} </h6></div>
+          <div className={styles.divEmail}> <h6 className={styles.emailText}>Sede: {' '} {user?.sede?.name} </h6></div>
           </div>
           <div className={styles.divEmail}> <img className={styles.iconMas} src={iconMas}/></div>
         </div>

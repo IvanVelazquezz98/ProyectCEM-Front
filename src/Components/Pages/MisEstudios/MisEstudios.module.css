@@ -1,8 +1,29 @@
 .flex{
     display: flex;
+    align-content: center;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
 }
 .info{
     display: flex;
     width: 100%;
     height: 100vh;
+}
+.divCreateStudy{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 8rem;
+
+}
+.iconMas{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    width: 20%;
+    height: 10rem;
+    margin-left: 35%;
 }

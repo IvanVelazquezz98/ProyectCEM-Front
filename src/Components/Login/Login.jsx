@@ -278,7 +278,7 @@ const MahoganyText = styled.div`
   color: #ffffff;
   box-shadow: 0px 3px 4px 0px rgba(0, 0, 0, 0.15);
   width: 307px;
-  height: 19px;
+  height: 40px;
   background-color: #482afa;
   flex-direction: row;
   justify-content: center;
