@@ -13,7 +13,7 @@ import SideBar from "../SideBar/SideBar";
 export default function Home() {
     const [drawer , setDrawer] = useState("HOME")
     const [user, setUser] = useState(window.localStorage.getItem('user') || null)
-    
+    const [day , setDay] = useState(new Date())
     const detailUser = useSelector((state) => state.userInfo)
     
     const navigate = useNavigate()
@@ -35,7 +35,7 @@ export default function Home() {
       console.log(detailUser)
     console.log(drawer)
     return (<>
-            <div className={styles.navBar}> <p className={styles.titleNavbar}>Contador de ecos y mas</p> </div>
+            <div className={styles.navBar}> <p className={styles.titleNavbar}>Contador de ecos y mas</p> <p className={styles.titleDate} >{day.getDate()} / {day.getMonth() + 1}</p> </div>
                 
             <div className={styles.flex}>
                 

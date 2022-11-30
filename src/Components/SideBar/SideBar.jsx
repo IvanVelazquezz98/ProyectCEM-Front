@@ -11,6 +11,7 @@ import * as FaIcons from 'react-icons/ai'
 export default function SideBar({handleChangeDrawer , user}) {
     const [show, setShow] = useState(false)
     const [sidebar, setSidebar] = useState(false)
+    const [reloj , setReloj] = useState(new Date())
     // const [drawer, setDrawer] = useState("MI PERFIL");
     const handleClose = () => setSidebar(false);
     const handleShow = () => setSidebar(true);
@@ -29,11 +30,16 @@ export default function SideBar({handleChangeDrawer , user}) {
     
     return (
         
-        <div>
+        <div className="firstContainer">
             <div className="buttonContainer">
+
         <button className="FilterButton" onClick={handleShow}>
           <FaIcons.AiOutlineBars/>
+          <div className="relojDiv">
+            {reloj ?<p className="textReloj">{reloj.getHours()} : {reloj.getMinutes()}hs</p> : null  }
+        </div>
         </button>
+        
       </div>
         <Offcanvas
         className="OffMainContainer"

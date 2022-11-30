@@ -18,7 +18,16 @@ export default function Contador ({user}){
         userId : user?.id,
         sedeId : user?.sede?.id
     })
-  
+  console.log('input',input)
+
+  const handleInputChange = function (e) {
+    setInput({
+        ...input,
+        [e.target.name]: e.target.value,
+    });
+};
+
+
 
     const handleCreateStudy = () => {
         setCreateStudy(true)

@@ -24,3 +24,16 @@
     font-size: large;
     font-style: italic;
 }
+.titleDate{
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: nowrap;
+    color: aliceblue;
+    margin-top: 0.7rem;
+    font-size: 1rem;
+    font-style: italic;
+    /* margin-right: 0; */
+    margin-left: 18%;
+}

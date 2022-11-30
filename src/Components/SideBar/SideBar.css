@@ -164,10 +164,14 @@
     display: flex;
     color: #e4f4f6;
     background-color: #482afa;
-    border-bottom-right-radius: 0.5rem ;
-    padding: 0.8rem;
-    font-size: 2rem;
-    border:none;
+    border-bottom-right-radius: 0.5rem;
+    font-size: 250%;
+    border: none;
+    flex-direction: column;
+    width: 100%;
+    padding-left: 20%;
+    padding-top: 10%;
+    align-items: center;
 
 }
 .sideBar{
@@ -209,5 +213,31 @@
 }
 .buttonContainer{
     height: 100%;
-    display: block;
+    display: flex;
+    margin-right: 1rem;
+}
+.firstContainer{
+    display: flex;
+    width: 18%;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+.relojDiv{
+    display: flex;
+    flex-direction: row;
+    width: 110%;
+    height: 3rem;
+    margin-top: 1rem;
+    border: black;
+    border-radius: 2px;
+    justify-content: center;
+}
+.textReloj{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    flex-direction: row;
+    font-size: 26%;
+    width: 5rem;
 }
