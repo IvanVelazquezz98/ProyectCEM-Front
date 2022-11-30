@@ -58,6 +58,7 @@ export default function MisEstudios({ user }) {
                             return (<option value={d} key={d}>{d}</option>)
                         })}
                     </select>
+                    Alta Prioridad<input type="checkbox"></input>
                 </div>
 
             </div>

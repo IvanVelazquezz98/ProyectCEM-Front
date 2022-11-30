@@ -1,3 +1,11 @@
+.buttonCreateNote{
+    display: flex;
+    margin-top: 10%;
+    border: none;
+    background-color: #482afa;
+    border-radius: 1rem;
+    color: aliceblue;
+}
 .flex{
     display: flex;
 }
@@ -34,8 +42,7 @@
     margin-top: 0.7rem;
     font-size: 1rem;
     font-style: italic;
-    margin-left: 30%;
-}
+    /* margin-right: 0; */ }
     
 .divNotes{
     display: flex;
@@ -48,7 +55,7 @@
     flex-direction: column;
     width: 40%;
     margin-right: 2rem;
-    height: 30%;
+    height: 35%;
     align-items: center;
     justify-content: flex-start;
     align-content: center;
@@ -63,13 +70,12 @@
     background-color: #c0bebb;
     flex-direction: column;
     width: 95%;
-    height: 40%;
+    height: auto;
     align-items: center;
     justify-content: flex-start;
     align-content: center;
     border-radius: 0.5rem;
     margin-top: 1rem;
-
 }
 .titleNotes{
     display: flex;
@@ -97,4 +103,9 @@
     background-color: #482afa;
     border-radius: 1rem;
     color: aliceblue;
+}
+.buttonContainer{
+    display: flex;
+    margin-top: auto;
+    flex-direction: column;
 }
