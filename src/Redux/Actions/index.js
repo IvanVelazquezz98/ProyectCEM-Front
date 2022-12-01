@@ -43,3 +43,15 @@ export function registerUser(payload  ) {
       })
     };
   }
+
+
+  export function createStudy(payload){
+    return async (dispatch) => {
+      const response  = await axios.post(`${BASE_URL}/api/study/create` , payload );
+      dispatch({
+        type: "GET_STUDY",
+        payload: response.data
+      })
+    };
+  
+  }

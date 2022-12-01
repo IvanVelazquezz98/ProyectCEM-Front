@@ -212,7 +212,7 @@
     flex-direction: column;
 }
 .buttonContainer{
-    height: 180vh;
+    height: auto;
     display: flex;
     margin-right: 1rem;
 }
@@ -221,6 +221,7 @@
     width: 18%;
     flex-direction: column;
     justify-content: flex-start;
+    margin-right: 5%;
 }
 .relojDiv{
     display: flex;

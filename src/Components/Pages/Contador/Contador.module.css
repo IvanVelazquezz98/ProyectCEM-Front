@@ -19,7 +19,7 @@
     align-items: center;
     width: 100%;
     height: 8rem;
-    margin-right: 5%;
+    margin-right: 10%;
     border-radius: 1rem;
     margin-top: 1rem;
 }
@@ -37,7 +37,7 @@
     flex-direction: column;
     justify-content: center;
     align-content: center;
-    margin-right: 5%;
+    margin-right: 10%;
     border-radius: 0.5rem;
     margin-top: 2rem;
     align-items: center;
@@ -66,12 +66,38 @@
 }
 .divInputClasification{
     display: flex;
-    margin-right: 0.5rem;
     justify-content: space-around;
     background-color: #482afa;
     border-radius: 0.5rem;
     color: aliceblue;
     padding: 0.2rem;
+    width: 90%;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+.inputClasificationText{
+    display: flex;
+    margin-top: 1rem;
+    margin-left: -0.5rem;
+    margin-right: 0.5rem;
+}
+.divInputStatus{
+    display: flex;
+    justify-content: center;
+    background-color: #482afa;
+    border-radius: 0.5rem;
+    color: aliceblue;
+    padding: 0.2rem;
+    width: 100%;
+    flex-direction: row;
+    align-items: center;
+}
+.inputStatus{
+    display: flex;
+    margin-top: 1rem;
+    margin-right: 1.5rem;
+    margin-top: 0.3rem;
+    margin-left: 0.2rem;
 }
 .divNotes{
     display: flex;
@@ -92,7 +118,7 @@
 }
 .inputNotes{
     display: flex;
-    background-color: #c6c6fe;
+    background-color: #f8f8fc;
     border-radius: 0.5rem;
 }
 .divImages{

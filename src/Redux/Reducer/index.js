@@ -1,7 +1,8 @@
 const initialState = {
     
     userStudys : [],
-    userInfo: []
+    userInfo: [],
+    
   }
   
   
@@ -14,6 +15,12 @@ const initialState = {
           ...state,
           userInfo: action.payload
         }
+
+        case "GET_STUDY":
+          return {
+            ...state,
+            userStudys: action.payload
+          }
   
   
       default: return state
