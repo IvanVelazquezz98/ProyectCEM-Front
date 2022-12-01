@@ -19,8 +19,7 @@ export default function SideBar({ handleChangeDrawer, user }) {
   let botonesUser = [
     "MI PERFIL",
     "MIS ESTUDIOS",
-    "MIS ESTUDIOS",
-    "CONTADOR DE ESTUDIOS"
+    "EMPEZAR TURNERA"
   ];
 
   function handleSelectInfo(e) {

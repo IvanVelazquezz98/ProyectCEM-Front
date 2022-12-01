@@ -5,12 +5,16 @@
     align-items: center;
 }
 .intro{
+    
     display: flex;
     width: 100%;
     height: 3rem;
-    margin-top: 3rem;
-    margin-left: 2rem;
+    margin-top: 1.5rem;
+    /* margin-left: 2rem; */
     justify-content: center;
+    color: #464748;
+    margin-left: 5%;
+
 }
 .editInfo{
     display: flex;
@@ -32,7 +36,20 @@
     margin-right: 6rem;
 }
 .divEmail{
+    margin-top: 1rem;
     display: flex;
+    width: 100%;
+    margin-right: 5%;
+    background-color: #b8b8bd;
+    border-radius: 1rem;
+    padding: 0px;
+    height: 2rem;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    margin-left: -6%;
+    color: #464748;
+
 }
 .emailText{
     display: flex;
@@ -40,6 +57,9 @@
     height: 3rem;
     margin-top: 3rem;
     justify-content: center;
+    margin-left: 0.2rem;
+    margin-right: 0.2rem;
+    margin-bottom: 1rem;
 }
 
 .divSede{
@@ -62,6 +82,9 @@
     display: flex;
     width: 100%;
     justify-content: center;
+    background-color: #b8b8bd;
+    margin-right: 5%;
+    border-radius: 1rem;
 }
 .iconMas{
     display: flex;

@@ -40,19 +40,11 @@ export default function Notes() {
       //cambiar el apartado de notas para q no quede tan desordenado
 
     return (
-    
-    
-           
-                
-
-                
 
              <div className={styles.info}>
-                
                 <div className={styles.divNotes}>
                     
-               
-                        <div className={styles.noteEnterContainer}>
+                      <div className={styles.noteEnterContainer}>
                     <h4 className={styles.titleNotes}>Nota de hoy</h4>
                         <div className={styles.noteContainer}>
 
@@ -64,8 +56,6 @@ export default function Notes() {
                             <button className={styles.buttonCreateNote} onClick={() => setCreateNoteDay(true)}>Crear Nota</button>} 
                         </div>
                         </div>
-                 
-
                     <div className={styles.noteEnterContainer}>
                         <h4 className={styles.titleNotes}>Nota Proxima</h4>
                         <div className={styles.noteContainer}>
@@ -75,19 +65,12 @@ export default function Notes() {
                         {notesNext ? <div className={styles.buttonDeleteNoteContainer}><div >
                             <p className={styles.buttonDeleteNote} onClick={(e) => handleDeleteNoteNext(e)}>🗑️</p> </div></div> :
                             <button className={styles.buttonCreateNote} onClick={() => setCreateNoteNext(true)}>Crear Nota</button>} 
-                        </div>
-                      
+                        </div> 
                     </div>
                     </div>
                     {createNoteDay ? <ModalNotes note={createNoteDay}  closeModal={setCreateNoteDay} /> : null}
             {createNoteNext ? <ModalNotes  closeModal={setCreateNoteNext}  /> : null}
-                </div>
-            
-            
-
-           
-            
-      
+                </div>         
 
     )
 }

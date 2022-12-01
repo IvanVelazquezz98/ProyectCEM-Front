@@ -12,7 +12,7 @@ import SideBar from "../SideBar/SideBar";
 import Notes from '../Notes/Notes'
 
 export default function Home() {
-    const [drawer , setDrawer] = useState("HOME")
+    const [drawer , setDrawer] = useState("MI PERFIL")
     const [user, setUser] = useState(window.localStorage.getItem('user') || null)
     const [day , setDay] = useState(new Date())
     const [notesDay , setNotesDay] = useState(window.localStorage.getItem('notesDay') || null)
@@ -40,27 +40,25 @@ export default function Home() {
      
       console.log(detailUser)
     console.log(drawer)
-    return (<>
-    
+    return (
+            <div >
             <div className={styles.navBar}> <p className={styles.titleNavbar}>Contador de ecos y mas</p> <p className={styles.titleDate} >{day.getDate()} / {day.getMonth() + 1}</p> </div>
                 
             <div className={styles.flex}>
                 
-            <SideBar user={detailUser} handleChangeDrawer={setDrawer}/>
-
-            {drawer === "HOME" ? <div className={styles.info}><Notes note={notesDay}/></div>: null }
-            {/* {createNoteDay ? <Notes note={createNoteDay}  closeModal={setCreateNoteDay} /> : null}
-            {createNoteNext ? <Notes  closeModal={setCreateNoteNext}  /> : null} */}
+            <SideBar user={detailUser} handleChangeDrawer={setDrawer}/> 
 
             {drawer === "MIS ESTUDIOS" ? <div className={styles.info}><MisEstudios user={detailUser}/></div> : null}
 
 
-            {drawer === "MI PERFIL" ? <div className={styles.info}><Perfil user={detailUser}/></div> : null}
+            {drawer === "MI PERFIL" ? <div className={styles.info} ><Perfil user={detailUser}/>
+            <Notes note={notesDay}/>
+            </div> : null}
 
 
-            {drawer === "CONTADOR DE ESTUDIOS" ? <div className={styles.info}><ContadorDeEstudios user={detailUser}/></div> : null}
+            {drawer === "EMPEZAR TURNERA" ? <div className={styles.info}><ContadorDeEstudios user={detailUser}/></div> : null}
             </div>
-            </>
+            </div>
       
 
     )
