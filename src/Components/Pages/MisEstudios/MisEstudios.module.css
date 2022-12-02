@@ -32,6 +32,7 @@
     flex-direction: row;
     height: 8rem;
     width: 100%;
+    margin-right: 10%;
 }
 .divStudyFor{
     display: flex;
@@ -41,9 +42,21 @@
     margin: 0.2rem;
     width: 100%;
     margin-right: 4%;
+    margin-left: 4%;
+    border-radius: 0.5rem;
 }
-.divFilters{
-    display:flex ;
+.divFilter{
+    display: flex;
+    width: 100%;
+    margin-right: 10%;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    background-color: #d5d5d8;
+    padding: 0.5rem;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0.5rem;
 }
 .divResultFilters{
     display: flex;
@@ -53,11 +66,13 @@
     background-color: #c5c2c2;
     flex-direction: column;
     align-content: center;
+    margin-right: 10%;
+    border-radius: 0.5rem;
 }
 .infoResultFilters{
     display: flex;
     align-items: center;
-    width: 100%;
+    width: 95%;
     justify-content: center;
     height: 2rem;
     background-color: #482afa;
@@ -77,6 +92,27 @@
     display: flex;
     margin-left: 30%;
     border: none;
-    background-color: #c5c2c2;
+    background-color: #686bd3;
     border-radius: 2rem;
+    color: aliceblue;
+}
+.filterTitle{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+.divInputFilter{
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    margin-top: 0.5rem;
+    justify-content: center;
+    margin-bottom: 1rem;;
+
+}
+.inputFilter{
+    display: flex;
+    border-color: #686bd3;
+    border-radius: 0.5rem;
+    margin-bottom: 0.2rem;
 }

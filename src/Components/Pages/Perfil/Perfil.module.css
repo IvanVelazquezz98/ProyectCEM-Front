@@ -41,7 +41,7 @@
     width: 100%;
     margin-right: 10%;
     background-color: #b8b8bd;
-    border-radius: 1rem;
+    border-radius: 0.5rem;
     padding: 0px;
     height: 2rem;
     align-items: center;
@@ -84,7 +84,7 @@
     justify-content: center;
     background-color: #b8b8bd;
     margin-right: 10%;
-    border-radius: 1rem;
+    border-radius: 0.5rem;
     height: 7rem;
 }
 .iconMas{

@@ -3,11 +3,11 @@ import styles from "./Contador.module.css"
 import React, { useState, useEffect } from "react";
 import ModalCreateStudy from "./ModalCreateStudy";
 import { createStudy } from "../../../Redux/Actions";
-import { useDispatch } from "react-redux";
+import { useDispatch,  useSelector } from "react-redux";
 
 export default function Contador({ user }) {
   const dispatch = useDispatch()
-  const [createStudy, setCreateStudy] = useState(false)
+  // const [createStudy, setCreateStudy] = useState(false)
   const [showClasificar, setShowClasificar] = useState(false)
   const [showNotas, setShowNotas] = useState(false)
   const [showFiles, setShowFiles] = useState(false)
@@ -96,7 +96,7 @@ export default function Contador({ user }) {
 
   //creador de un solo estudio
   const handleCreateStudy = () => {
-    let date = new Date()
+    let date = new Date().toLocaleDateString('en-us', { weekday:"long", year:"numeric", month:"short", day:"numeric"})
     let studyEco = {
       method: "ecografia",
       reference: "",
@@ -108,11 +108,11 @@ export default function Contador({ user }) {
       userId: user?.id,
       sedeName: user?.sede?.name
     }
-    dispatch(createStudy({study: studyEco}))
+    dispatch(createStudy({studyEco}))
   }
   //creador de dos estudios
   const handleCreateStudyTwo = () => {
-    let date = new Date()
+    let date = new Date().toLocaleDateString('en-us', { weekday:"long", year:"numeric", month:"short", day:"numeric"})
     let studyEco = {
       method: "ecografia",
       reference: "",
@@ -135,7 +135,7 @@ export default function Contador({ user }) {
       userId: user?.id,
       sedeName: user?.sede?.name
     }
-    dispatch(createStudy({study: {studyEco ,studyDoppler}}))
+    dispatch(createStudy({studyEco ,studyDoppler}))
 
   }
   console.log('input1', input)

@@ -48,10 +48,15 @@ export function registerUser(payload  ) {
   export function createStudy(payload){
     return async (dispatch) => {
       const response  = await axios.post(`${BASE_URL}/api/study/create` , payload );
+    };
+  }
+
+  export function getStudyForUser(payload){
+    return async (dispatch) => {
+      const response  = await axios.get(`${BASE_URL}/api/study/user/` + payload );
       dispatch({
         type: "GET_STUDY",
-        payload: response.data
+        payload: response.data.study
       })
     };
-  
   }

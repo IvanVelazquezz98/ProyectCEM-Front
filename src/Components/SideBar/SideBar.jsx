@@ -19,7 +19,8 @@ export default function SideBar({ handleChangeDrawer, user }) {
   let botonesUser = [
     "MI PERFIL",
     "MIS ESTUDIOS",
-    "EMPEZAR TURNERA"
+    "AGENDA DE PACIENTES",
+    "EMPEZAR INFORME"
   ];
 
   function handleSelectInfo(e) {

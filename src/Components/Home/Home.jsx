@@ -56,7 +56,9 @@ export default function Home() {
             </div> : null}
 
 
-            {drawer === "EMPEZAR TURNERA" ? <div className={styles.info}><ContadorDeEstudios user={detailUser}/></div> : null}
+            {drawer === "AGENDA DE PACIENTES" ? <div className={styles.info}><ContadorDeEstudios user={detailUser}/></div> : null}
+
+            {drawer === "EMPEZAR INFORME" ? <div className={styles.info}>EMPEZAR INFORME</div> : null}
             </div>
             </div>
       
