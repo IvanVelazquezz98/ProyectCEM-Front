@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getStudyForUser } from "../../../Redux/Actions";
+import { getStudyForUser, filteredStudies } from "../../../Redux/Actions";
 import styles from './MisEstudios.module.css'
 
 
 export default function MisEstudios({ user }) {
 
+    const userId = user.id
     const dispatch = useDispatch();
     const userStudys = useSelector((state) => state.userStudys)
     const [dataFilter, setDataFilter] = useState({})
@@ -17,19 +18,28 @@ export default function MisEstudios({ user }) {
     const [monthSelected, setMonthSelected] = useState("")
     const [filterUse, setFilterUse] = useState("")
     const [valueCheckBox, setValueCheckBox] = useState("normal")
+    //const [filters, setFilters] = useState({dayFilter, monthFilter, classificationFilter})
     const allClasification = ["Normal", "BiRadsIII", "BiRadsIV", "BiRadsV", "Otro"]
 
 
     useEffect(() => {
-        dispatch(getStudyForUser(user?.id))
+        dispatch(getStudyForUser(userId))
         filtersStudysFor()
     }, []);
 
+    let filters = {
+        userId,
+        daySelected,
+        monthSelected,
+        valueCheckBox
+    }
+
     const filtersStudysFor = () => {
+
 
         let dayActual = fechaActual.getDate()
         let weekActual = fechaActual.getDay()
-        let monthActual = fechaActual.getMonth() + 1 
+        let monthActual = fechaActual.getMonth() + 1
 
 
         let FilterDay = userStudys.map((study) => (study.date[5] && study.date[6] == dayActual))
@@ -38,13 +48,14 @@ export default function MisEstudios({ user }) {
         let filterWeek = ""
 
         // let filterMonth = userStudys.map((study) => ())
-        console.log('date entero' , fechaActual)
-        console.log('dia actual' , dayActual)
+        console.log('date entero', fechaActual)
+        console.log('dia actual', dayActual)
 
     }
 
     const allMonths = [{
-        nombre: "Enero", id: 1},
+        nombre: "Enero", id: 1
+    },
     { nombre: "Febrero", id: 2 },
     { nombre: "Marzo", id: 3 },
     { nombre: "Abril", id: 4 },
@@ -66,15 +77,19 @@ export default function MisEstudios({ user }) {
     const handleSelectMonth = (e) => {
         e.preventDefault()
         setMonthSelected(e.target.value)
+        dispatch(filteredStudies(filters))
     }
     const handleSelectDay = (e) => {
         e.preventDefault()
         setDaySelected(e.target.value)
+        dispatch(filteredStudies(filters))
     }
 
     const handleSelectCheckbox = (e) => {
         setValueCheckBox(e.target.value)
+        dispatch(filteredStudies(filters))
     }
+    console.log(filters)
 
     return (
         <div className={styles.flex}>
